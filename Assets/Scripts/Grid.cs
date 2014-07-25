@@ -32,14 +32,10 @@ public class Grid : MonoBehaviour {
 	{
 		circles = new List<Circle>();
 		circle.transform.position = Vector3.zero;
-		Debug.Log ("Height = " + Screen.height);
-		Debug.Log ("Width = " + Screen.width);
 		
 		gridWidth = Screen.width - 2*(Screen.width * widthBufferPercent);
 		gridHeight = Screen.height - 2*(Screen.height * heightBufferPercent) - circle.texture.pixelInset.height/2f;
-		
-		Debug.Log ("GridHeight = " + gridHeight);
-		Debug.Log ("GridWidth = " + gridWidth);
+
 		
 		for (int i = numCols-1; i >=0; i--)
 		{
@@ -50,7 +46,7 @@ public class Grid : MonoBehaviour {
 				float xOffset = gridWidth/(numRows-1) * j + Screen.width*widthBufferPercent/2f;
 				//if (j > 0)		
 				xOffset += circle.texture.pixelInset.width/2f; 
-				Circle thisCircle = ((GameObject) Instantiate(circle.gameObject, Vector3.zero, Quaternion.identity)).GetComponent<Circle>();
+				Circle thisCircle = ((GameObject) Instantiate(circle.gameObject, Vector3.zero+Vector3.forward*10, Quaternion.identity)).GetComponent<Circle>();
 				thisCircle.name = "Circle " + (j+1) + "-" + (i+1); 
 				thisCircle.transform.parent = transform;
 				thisCircle.SetOffsets(xOffset, yOffset);

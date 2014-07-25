@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
 	public Grid grid;
 	private int numMissed;
 	private int numHit;
+	public GUIText timeText;
 	
 	// Use this for initialization
 	void Start () {
@@ -41,6 +42,12 @@ public class GameManager : MonoBehaviour {
 			Switch();
 			//IncreaseSpeed();
 		}
+		UpdateTimeText();
+	}
+	
+	void UpdateTimeText()
+	{
+		timeText.text = Mathf.FloorToInt(Time.time - gameStartTime).ToString();
 	}
 	
 	void IncreaseSpeed() //after 
